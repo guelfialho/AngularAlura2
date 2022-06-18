@@ -29,6 +29,7 @@ export class AutenticacaoGuard implements CanLoad {
       this.router.navigate(['']);
       return false;
     }
+
     return true;
   }
 }

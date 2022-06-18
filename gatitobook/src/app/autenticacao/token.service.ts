@@ -10,7 +10,7 @@ export class TokenService {
     return localStorage.getItem(KEY) ?? '';
   }
 
-  salvarToken(token: string) {
+  salvaToken(token: string) {
     localStorage.setItem(KEY, token);
   }
 
@@ -21,4 +21,5 @@ export class TokenService {
   possuiToken() {
     return !!this.retornaToken();
   }
+  
 }

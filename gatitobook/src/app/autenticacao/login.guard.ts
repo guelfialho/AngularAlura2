@@ -16,6 +16,7 @@ import { UsuarioService } from './usuario/usuario.service';
 })
 export class LoginGuard implements CanLoad {
   constructor(private usuarioService: UsuarioService, private router: Router) {}
+
   canLoad(
     route: Route,
     segments: UrlSegment[]
@@ -28,6 +29,7 @@ export class LoginGuard implements CanLoad {
       this.router.navigate(['animais']);
       return false;
     }
+
     return true;
   }
 }

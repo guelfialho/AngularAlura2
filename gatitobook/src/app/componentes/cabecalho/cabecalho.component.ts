@@ -9,6 +9,7 @@ import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
 })
 export class CabecalhoComponent {
   user$ = this.usuarioService.retornaUsuario();
+
   constructor(private usuarioService: UsuarioService, private router: Router) {}
 
   logout() {

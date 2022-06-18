@@ -10,6 +10,7 @@ import { AutenticacaoService } from 'src/app/autenticacao/autenticacao.service';
 export class LoginComponent implements OnInit {
   usuario = '';
   senha = '';
+
   constructor(
     private authService: AutenticacaoService,
     private router: Router
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['animais']);
       },
       (error) => {
-        alert('Usuario ou senha inválido');
+        alert('Usuário ou senha inválido');
         console.log(error);
       }
     );

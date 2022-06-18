@@ -12,6 +12,7 @@ import { AnimaisService } from '../animais.service';
 export class DetalheAnimalComponent implements OnInit {
   animalId!: number;
   animal$!: Observable<Animal>;
+
   constructor(
     private animaisService: AnimaisService,
     private activatedRoute: ActivatedRoute,
