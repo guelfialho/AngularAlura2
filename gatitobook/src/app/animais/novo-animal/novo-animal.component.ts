@@ -1,9 +1,9 @@
-import { Router } from '@angular/router';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 import { AnimaisService } from '../animais.service';
-import { finalize } from 'rxjs/operators/';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-novo-animal',
@@ -18,12 +18,12 @@ export class NovoAnimalComponent implements OnInit {
 
   constructor(
     private animaisService: AnimaisService,
-    private formBuilder: FormBuilder,
+    private formbuilder: FormBuilder,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.formularioAnimal = this.formBuilder.group({
+    this.formularioAnimal = this.formbuilder.group({
       file: ['', Validators.required],
       description: ['', Validators.maxLength(300)],
       allowComments: [true],
@@ -40,7 +40,7 @@ export class NovoAnimalComponent implements OnInit {
       .pipe(finalize(() => this.router.navigate(['animais'])))
       .subscribe(
         (event: HttpEvent<any>) => {
-          if (event.type == HttpEventType.UploadProgress) {
+          if (event.type === HttpEventType.UploadProgress) {
             const total = event.total ?? 1;
             this.percentualConcluido = Math.round(100 * (event.loaded / total));
           }
@@ -49,7 +49,7 @@ export class NovoAnimalComponent implements OnInit {
       );
   }
 
-  gravaArquivo(arquivo: any) {
+  gravaArquivo(arquivo: any): void {
     const [file] = arquivo?.files;
     this.file = file;
     const reader = new FileReader();
